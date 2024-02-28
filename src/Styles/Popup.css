@@ -1,0 +1,49 @@
+/*EncaisserPopup.css */
+
+.popup-overlay {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour assombrir le reste de la page */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 1000; /* Une valeur élevée pour s'assurer que le pop-up est au-dessus du reste du contenu */
+ }
+ 
+ .popup-content {
+   background: #fff; /* Fond blanc pour le contenu du pop-up */
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Légère ombre pour créer un effet de profondeur */
+   max-width: 400px; /* Ajustez la largeur maximale selon vos besoins */
+   width: 100%;
+   text-align: center;
+   margin-left: 20px;
+   margin-right: 20px;
+   position: relative;
+ }
+ 
+ .close-btn {
+   background: none;
+   border: none;
+   color: #333; /* Couleur du texte pour le bouton de fermeture */
+   font-size: 20px;
+   cursor: pointer;
+   position: absolute;
+   top: 15px;
+   left: 15px;
+ }
+ 
+ h2, p {
+   color: #000000;
+   margin-top: 10px;
+   font-family: Poppins;
+  }
+  p span {
+    font-weight: 600;
+    color: #333;
+    font-size: 20px;
+  }

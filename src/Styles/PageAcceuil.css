@@ -1,0 +1,69 @@
+
+
+.logo-container {
+  text-align: center;
+  margin: 50px;
+}
+
+.logo {
+  width: 100px;
+  height: 100px;
+}
+
+.main-container {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   grid-template-rows: repeat(3, 1fr);
+   grid-gap: 20px;
+   margin: 20px;
+ }
+ 
+ .sub-button {
+   background-color: #79767633;
+   border: none;
+   border-radius: 20px;
+   padding: 20px;
+   text-align: start;
+   cursor: pointer;
+   text-decoration: none;
+ }
+ 
+ .circle-icon {
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ 
+ .circle-icon img {
+   max-width: 80%; /* Ajustez la taille de l'icône en fonction de vos besoins */
+   max-height: 80%;
+   border-radius: 50%;
+}
+
+/* Style du titre */
+.sub-button h2 {
+  font-family: Poppins;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  color: #000000; /* Couleur de texte grise */
+  margin: 15px 0; /* Marge autour du titre */
+  text-decoration: none;
+}
+
+/* Style du texte en dessous du titre */
+.sub-button p {
+  font-family: Poppins;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  color: #000000; /* Couleur de texte grise plus claire */
+  margin: 10px 0; /* Marge autour du texte */
+}

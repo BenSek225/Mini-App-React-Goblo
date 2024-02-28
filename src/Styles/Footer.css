@@ -1,0 +1,17 @@
+/* src/Styles/Footer.css */
+
+.footer-container {
+   position: relative;
+   width: 100%;
+   text-align: center;
+   margin-bottom: 30px;
+   margin-top: auto; /* Assure que le footer reste en bas */
+ }
+ 
+.footer-text {
+   font-family: Poppins;
+   font-size: 14px;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #A7A2A2;
+}
