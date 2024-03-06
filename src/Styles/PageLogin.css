@@ -1,78 +1,48 @@
 /* src/Styles/PageLogin.css */
 
+.login-container{
+  position: relative;
+  padding: 20px;
+}
+
+/*Le logo */
 .logo-container {
-   text-align: center;
-   margin-top: 260px;
- }
- 
- .logo {
-   width: 100px;
-   height: 100px;
+  margin-top: 200px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.rounded-circle{
+  width: 120px;
+  height: 120px;
 }
 
-/* Container de l'input */
+/* Container des l'input */
 .input-box {
-   margin: 20px;
- }
-.input-container {
-   width: 100%;
-   height: 55px;
-   top: 460px;
-   border-radius: 10px;
-   background-color: #d1d1d1; /* Couleur de fond grise */
-   display: flex;
-   align-items: center;
-   }
+  margin: 20px;
+  height: 55px;}
+.bg-custom-color {
+  background-color: #ebe9e9 !important;
+}
 
- 
- /* Wrapper de l'input (contenant l'icône et le champ de saisie) */
- .input-wrapper {
-   display: flex;
-   align-items: center;
- }
- 
- /* Icône dans le wrapper */
- .input-icon {
-   width: 50px;
-   height: 50px;
-   margin: 3.83px 4.79px;
- }
- 
- /* Champ de saisie */
- .input-field {
-   border: none;
-   outline: none;
-   background: none;
-   width: 100%;
-   margin: 10px; /* Marge à gauche pour l'espace entre l'icône et le champ de saisie */
+/* le boutton se rappeler de moi */
+.form-check {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
 }
- 
-/* Container du "Se rappeler de moi" */
-.remember-me-container {
-   display: flex;
-   align-items: center;
-   margin-left: 20px; /* Ajuste la marge selon tes besoins */
- }
- 
- /* Style du checkbox */
- .remember-me-checkbox {
-   width: 14px;
-   height: 14px;
-   top: 7px;
-   left: 3px;
-   border-radius: 50%; /* Pour obtenir une forme de cercle */
-   background-color: #7E869E; /* Couleur spécifique */
- }
- 
- /* Style du label "Se rappeler de moi" */
- .remember-me-label {
-   font-family: Poppins;
-   font-size: 18px;
-   font-weight: 400;
-   line-height: 15px;
-   letter-spacing: -0.04em;
-   text-align: left;
-   color: #A7A2A2; /* Couleur spécifique */
-   margin-left: 8px; /* Ajuste la marge selon tes besoins */
+
+.form-check-input {
+  margin-right: 10px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
 }
- 
+
+.form-check-label {
+  font-family: Poppins;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 15px;
+}

@@ -5,9 +5,11 @@ import '../Styles/Footer.css';
 
 function Footer() {
   return (
-    <div className="footer-container">
-      <p className="footer-text">© 2022 - Globo</p>
-    </div>
+    <footer className="text-light text-center py-3">
+      <div className="container">
+        <p className='footer-text'>&copy; 2022 - Globo</p>
+      </div>
+    </footer>
   );
 }
 

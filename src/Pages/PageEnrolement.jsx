@@ -35,7 +35,6 @@ function PageEnrolement() {
   return (
     <div className='enrolement-container'>
 
-
       {/* 1. Bouton Retour avec icône */}
       <div className="encaissement-back-button">
         <button onClick={handleBack}>

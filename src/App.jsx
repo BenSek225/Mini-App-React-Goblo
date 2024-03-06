@@ -15,7 +15,6 @@ function App() {
         <Route path="/acceuil" element={<PageAcceuil />} />
         <Route path="/enrolement" element={<PageEnrolement />} />
         <Route path="/encaissement" element={<PageEncaissement />} />
-        {/* Ajoutez d'autres routes au besoin */}
       </Routes>
     </Router>
   );

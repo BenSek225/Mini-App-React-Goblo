@@ -6,11 +6,11 @@ import '../Styles/Boutton.css';
 
 function Boutton({ texte, onClick}) {
   return (
-    <div className="boutton-container">
-      <button className="custom-button" onClick={onClick}>
+    <div className="container">
+      <button type="button" className="btn btn-primary" onClick={onClick}>
         {texte}
       </button>
-    </div>
+  </div>
   );
 }
 

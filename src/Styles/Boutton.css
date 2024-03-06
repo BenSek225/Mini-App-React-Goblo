@@ -1,28 +1,27 @@
 /* Styles/Boutton.css */
 
-.boutton-container {
+.container{
    margin: 20px;
    margin-top: 60px;
-   margin-bottom: 50px;/* Ajoutez des marges selon vos besoins */
-}
+   margin-bottom: 50px;
+ }
  
-.custom-button {
+ .btn{
    width: 100%;
-   background-color: #000;
-   color: #fff;
-   padding: 15px;
+   background-color: #000 !important;
+   padding: 15px !important;
    text-align: center;
-   font-family: 'Poppins', sans-serif;
+   font-family: 'Poppins', sans-serif !important;
    font-size: 16px;
-   font-weight: 700;
+   font-weight: 700 !important;
    line-height: 24px;
    letter-spacing: 0em;
-   border: none;
+   border: none !important;
    border-radius: 5px;
    cursor: pointer;
-}
  
-.custom-button:hover {
-background-color: #333; /* Changez la couleur au survol selon vos préférences */
-}
+ }
  
+ .btn-primary:hover {
+   background-color: #333;
+ }
