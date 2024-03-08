@@ -16,7 +16,7 @@ function PopupEnroler({ Nomprenom, onClose }) {
 
   return (
     <div className="popup-overlay">
-      <div className="popup-content">
+      <div className="popup-content text-center">
         <button className="close-btn" onClick={onClose}>X</button>
         <h2>Enregistrement réussi</h2>
         <p><span>{Nomprenom}</span> a le matricule N°</p>

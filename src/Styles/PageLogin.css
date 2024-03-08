@@ -1,6 +1,8 @@
 /* src/Styles/PageLogin.css */
 
 .login-container{
+  max-width: 600px;
+  margin: auto;
   position: relative;
   padding: 20px;
 }

@@ -16,7 +16,7 @@ function PopupEncaisser({ onClose }) {
 
   return (
     <div className="popup-overlay">
-      <div className="popup-content">
+      <div className="popup-content text-center">
         <button className="close-btn" onClick={onClose}>X</button>
         <h2>Encaissement réussi</h2>
         <p> <span> M. TETCHI </span> a payé</p>

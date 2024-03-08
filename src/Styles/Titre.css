@@ -1,24 +1,18 @@
 /* src/Styles/Titre.css */
 
 .titre-container {
-   text-align: center;
-   margin-top: 70px; /* Ajustez la marge selon vos préférences */
+   margin-top: 60px; /* Ajustez la marge selon vos préférences */
 }
- 
-/* src/Styles/Titre.css */
 
 .titre-h1 {
    font-family: Poppins;
    font-size: 30px;
    line-height: 10px;
-   letter-spacing: -0.02em;
-   text-align: center;
+   letter-spacing: 0.03em;
    color: #000000; /* Ajoutez la couleur du texte selon vos préférences */
-   padding: 1px; /* Ajoutez le rembourrage selon vos préférences */
+   padding: 1px;
    margin-bottom: 10px; /* Ajoutez la marge selon vos préférences */
 }
- 
- 
 .titre-p {
    font-family: Poppins;
    font-size: 16px;
@@ -26,4 +20,3 @@
    line-height: 1.5;
    color: #555;
 }
- 

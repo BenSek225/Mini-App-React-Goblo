@@ -1,48 +1,34 @@
 /* src/Styles/PageEncaissement.css */
 
-.encaissement-container {
+.encaissement-container{
+  max-width: 600px;
+  margin: auto;
   position: relative;
+  padding: 20px;
 }
 
 /* Bouton Retour */
-.encaissement-back-button {
-  position: absolute;
-  top: 0px;
-  left: 10px;
- }
-
- .encaissement-back-button button {
-  background: none;
+.back-button{
+  width: 40px;
+  height: 40px;
   border: none;
-  cursor: pointer;
- }
-
- .encaissement-back-button img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+  font-weight: 900;
+  font-size: 20px;
 }
+
 
 /* Input "Matricule *" */
-
-.encaissement-input{
-  position: relative;
-  margin: 30px;
-  margin-top: 180px;
-}
-
-.input-content {
-  position: relative;
-  margin-right: 20px;
-}
-
-.encaissement-text-input {
+.input-container {
+  padding-top: 70px;
+  margin: 20px;
   width: 100%;
-  border: none;
-  border-bottom: 2px solid #000;
-  background-color: white;
-  padding: 10px;
-  font-family: Poppins;
-  font-size: 16px;
+}
+
+.custom-form-control {
+  background-color: transparent;
   outline: none;
+  border-radius: 0;
+  font-family: Poppins;
+  letter-spacing: 0.04em;
+  border-bottom: 2px solid #000 !important;
 }

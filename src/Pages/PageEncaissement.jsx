@@ -28,25 +28,28 @@ function PageEncaissement() {
   return (
     <div className="encaissement-container">
 
-      {/* 1. Bouton Retour avec icône */}
-      <div className="encaissement-back-button">
-        <button onClick={handleBack}>
-          <img src="/Boutton.png" alt="Boutton Retour" />
-        </button>
-      </div>
+      {/* 1. Bouton Retour*/}
+      <button
+        type="button"
+        className="rounded-circle position-absolute top-0 start-0 m-3 back-button"
+        onClick={handleBack}>
+        {/* <img src="/Boutton.png" alt="Boutton Retour" /> */}
+        {'<'}
+      </button>
       
       {/* 2. Titre "Encaisser" */}
       <Titre titrePage="Encaisser"/>
 
       {/* 3. Input "Matricule *" */}
-      <div className="encaissement-input">
-        <label htmlFor="matriculeInput"></label>
-        <div  className= 'input-content'>
-          <input type="text" 
-                id="matriculeInput" 
-                required 
-                className="encaissement-text-input" 
-                placeholder='Matricule *'/>
+      <div className="d-flex justify-content-center mt-5">
+        <div className="input-container">
+          <label htmlFor="matriculeInput"></label>
+          <input
+            type="text"
+            id="matriculeInput"
+            className="form-control custom-form-control border-0 border-bottom border-black"
+            placeholder="Matricule *"
+          />
         </div>
       </div>
 
@@ -55,7 +58,7 @@ function PageEncaissement() {
 
       {/* Pop-up de succès */}
       {showPopupEncaisser && <PopupEncaisser onClose={handleClosePopupEncaisser} />}
-
+      
       {/* 5. Appeler le Footer */}
       <Footer/>
     </div>

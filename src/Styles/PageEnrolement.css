@@ -1,121 +1,48 @@
 .enrolement-container {
-   position: relative;
- }
- 
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  padding: 20px;
+}
+
  /* Bouton Retour */
- .encaissement-back-button {
-   position: absolute;
-   top: 0px;
-   left: 10px;
-  }
- 
-  .encaissement-back-button button {
-   background: none;
-   border: none;
-   cursor: pointer;
-  }
- 
-  .encaissement-back-button img {
-   width: 50px;
-   height: 50px;
-   border-radius: 50%;
- }
+.back-button{
+  width: 40px;
+  height: 40px;
+  border: none;
+  font-weight: 900;
+  font-size: 20px;
+}
 
+/* Input "Nom et prénom *", "Raison social", "Montant" */
+.nompre-margin {
+  margin: 60px 20px 10px 20px;
+  width: 100%;
+}
+.boite-input {
+  margin: 15px 20px 10px 20px;
+  width: 100%;
+}
+.custom-form-control {
+  background-color: transparent;
+  outline: none;
+  border-radius: 0;
+  font-family: Poppins;
+  letter-spacing: 0.04em;
+}
 
- /* Input "Nom et prénom *" */
-.container-nomprenom {
-   position: relative;
-   margin: 30px;
-   margin-top: 70px;
- }
- 
- .container-nomprenomInput {
-   position: relative;
-   margin-right: 20px;
- }
+/* Deux inputs "Zone *" et "Secteur *" */
+.add-margin{
+  margin: 20px;
+}
+.custom-form-select{
+  font-family: Poppins;
+  letter-spacing: 0.04em;
+  color: #6e6e6e !important;
+}
 
- .container-raisonsocial{
-   position: relative;
-   margin: 30px;
- }
-
- .container-raisonsocialInput{
-   position: relative;
-   margin-right: 20px;
- }
- 
- .enrolement-container input {
-   width: 100%;
-   border: none;
-   border-bottom: 2px solid #000;
-   background-color: white;
-   padding: 10px;
-   font-family: Poppins;
-   font-size: 16px;
-   outline: none;
- }
- 
- /* Deux inputs "Zone *" et "Secteur *" */
-.zone-section {
-   display: grid;
-   grid-template-columns: 2fr 1fr;
-   gap: 1px;
-   margin-bottom: 30px;
-   margin-right: 10px;
-   margin-left: 10px;
- }
- select{
-   border: none;
- }
- .container-zoneListe{
-   border-bottom: 2px solid #000;
- }
- .container-sectionListe{
-   border-bottom: 2px solid #000;
- }
- /* Liste déroulante "Zone" et "Secteur" */
- .container-zoneListe,
- .container-sectionListe {
-   position: relative;
-   margin-right: 20px;
-   margin-left: 20px;
- }
- 
- /* Deux inputs "Telephone 1 *" et "Telephone 2" */
- .Tel1-2 {
-   display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 10px;
-   margin-bottom: 30px;
-   margin-right: 10px;
- }
- .container-Tel1Input,
- .container-Tel2Input{
-   position: relative;
-   margin-right: 40px;
-   margin-left: 20px;
- }
-
- .container-montant{
-   position: relative;
-   margin: 20px;
- }
-
- .container-montantInput{
-   position: relative;
-   margin-right: 20px;
-   margin-bottom: 40px;
- }
-
- .categorie{
-   border-bottom: 2px solid #000;
-   margin-left: 20px;
-   margin-right: 20px;
- }
- .container-categorieSelect {
-   position: relative;
-   margin-right: 20px;
-   margin-left: 20px;
-   margin-bottom: 8px;
- }
- 
+/* Deux inputs "Telephone 1 *" et "Telephone 2" */
+.tel-margin{
+  margin: 20px;
+  margin-top: 35px;
+}
