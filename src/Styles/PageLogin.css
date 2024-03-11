@@ -48,3 +48,8 @@
   font-weight: 500;
   line-height: 15px;
 }
+
+p{
+  text-decoration: none; 
+  font-size: large;
+}

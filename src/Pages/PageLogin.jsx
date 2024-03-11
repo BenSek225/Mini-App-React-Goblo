@@ -1,12 +1,37 @@
 // src/pages/PageLogin.jsx
 // Position: \src\Pages\PageLogin.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import Boutton from '../Components/Boutton';
 import Footer from '../Components/Footer';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from  "react-router-dom";
+
+import { auth } from  '../firebase-config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 import '../Styles/PageLogin.css';
 
 function PageLogin() {
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  function handleLogin(e) {
+    e.preventDefault();
+
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        console.log(userCredential)
+        alert('Connection réussi')
+        navigate("/acceuil");
+    })
+    .catch((error) => {
+        console.error('Erreur de connexion: ', error.message);
+        alert( 'erreur :'+ error.message );
+    });
+  }
+
   return (
     <div className="login-container">
 
@@ -24,8 +49,10 @@ function PageLogin() {
           </span>
           <input
             type="email"
-            className="form-control bg-custom-color"
             placeholder="Votre Login"
+            className="form-control bg-custom-color"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
       </div>
@@ -38,8 +65,10 @@ function PageLogin() {
           </span>
           <input
             type="password"
-            className="form-control bg-custom-color"
             placeholder="Votre mot de passe"
+            className="form-control bg-custom-color"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </div>
       </div>
@@ -53,8 +82,11 @@ function PageLogin() {
 
       {/* 5. Bouton "Connection" */}
       <Link to="/acceuil">
-        <Boutton texte="Connection" />
+        <Boutton texte="Connexion" onClick={handleLogin}/>
       </Link>
+
+      {/* Lien pour la réinitialisation du mot de passe */}
+      <p className="text-center"> <Link to="/reset-password"> Mot de passe oublié ? </Link></p>
 
       {/* 6. Footer */}
       <Footer />

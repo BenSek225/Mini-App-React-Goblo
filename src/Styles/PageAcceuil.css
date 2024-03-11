@@ -25,6 +25,30 @@
   padding: 15px;
 }
 
+.group-container {
+  max-width: 850px;
+  margin: auto;
+  position: relative;
+  padding: 20px;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.flex-item {
+  width: calc(50% - 10px); /* Pour deux colonnes sur les petits écrans */
+  margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+  .flex-item {
+    width: calc(33.3333% - 10px); /* Pour trois colonnes sur les écrans moyens et plus */
+  }
+}
+
 /* style icone */
 .circle-icon {
   width: 60px;
