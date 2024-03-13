@@ -1,16 +1,12 @@
 
-.acceuil-container{
-  max-width: 850px;
-  margin: auto;
-  position: relative;
-  padding: 20px;
+/* Le contenu de la page */
+.acceuil{
+  max-width: 850px !important;
 }
 
 /*Le logo */
-.container-logo {
+.logo-ici {
   margin-top: 50px;
-  margin-bottom: 20px;
-  text-align: center;
 }
 
 /* les boutons */
@@ -65,19 +61,9 @@
   max-height: 80%;
   border-radius: 50%;
 }
-/* En bas ce sont les style a ajouter si vous preferez utiliser les icones bootstrap directement */
-
-/* .custom-fs {
-  font-size: 35px;
-}
-.custom-plus {
-  font-size: 20px;
-  margin-bottom: 4px;
-} */
 
 /* style titre */
 .group-container h2 {
-  font-family: Poppins;
   font-size: 25px;
   font-weight: 700;
   line-height: 15px;
@@ -88,7 +74,6 @@
 
 /* Style sous-titre */
 .group-container p {
-  font-family: Poppins;
   font-size: 16px;
   font-weight: 400;
   line-height: 18px;

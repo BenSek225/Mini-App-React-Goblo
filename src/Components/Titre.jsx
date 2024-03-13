@@ -5,9 +5,9 @@ import '../Styles/Titre.css';
 
 function Titre({ titrePage }) {
   return (
-    <div className="titre-container text-center">
-      <h1 className="titre-h1">{titrePage}</h1>
-      <p className="titre-p">Les contribuables</p>
+    <div className="text-center mt-5">
+      <h1 className="titre fs-1">{titrePage}</h1>
+      <p className="s-titre fs-5">Les contribuables</p>
     </div>
   );
 }

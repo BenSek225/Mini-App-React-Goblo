@@ -1,17 +1,9 @@
 /* src/Styles/PageLogin.css */
 
-.login-container{
-  max-width: 600px;
-  margin: auto;
-  position: relative;
-  padding: 20px;
-}
 
 /*Le logo */
-.logo-container {
-  margin-top: 200px;
-  margin-bottom: 20px;
-  text-align: center;
+.logo {
+  margin-top: 150px;
 }
 .rounded-circle{
   width: 120px;
@@ -28,28 +20,19 @@
 
 /* le boutton se rappeler de moi */
 .form-check {
-  margin-top: 15px;
-  margin-bottom: 15px;
   display: flex;
   align-items: center;
-  margin-left: 20px;
 }
 
 .form-check-input {
-  margin-right: 10px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
+  border: 1px solid rgb(136, 136, 136) !important;
 }
 
 .form-check-label {
-  font-family: Poppins;
   font-size: 18px;
   font-weight: 500;
   line-height: 15px;
-}
-
-p{
-  text-decoration: none; 
-  font-size: large;
 }

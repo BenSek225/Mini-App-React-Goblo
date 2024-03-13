@@ -1,18 +1,3 @@
-.enrolement-container {
-  max-width: 600px;
-  margin: auto;
-  position: relative;
-  padding: 20px;
-}
-
- /* Bouton Retour */
-.back-button{
-  width: 40px;
-  height: 40px;
-  border: none;
-  font-weight: 900;
-  font-size: 20px;
-}
 
 /* Input "Nom et prénom *", "Raison social", "Montant" */
 .nompre-margin {
@@ -27,7 +12,6 @@
   background-color: transparent;
   outline: none;
   border-radius: 0;
-  font-family: Poppins;
   letter-spacing: 0.04em;
 }
 
@@ -36,7 +20,6 @@
   margin: 20px;
 }
 .custom-form-select{
-  font-family: Poppins;
   letter-spacing: 0.04em;
   color: #6e6e6e !important;
 }

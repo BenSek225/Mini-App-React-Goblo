@@ -7,7 +7,7 @@ function Footer() {
   return (
     <footer className="text-light text-center py-3">
       <div className="container">
-        <p className='footer-text'>&copy; 2022 - Globo</p>
+        <p className='footer-text fs-5'>&copy; 2022 - Globo</p>
       </div>
     </footer>
   );

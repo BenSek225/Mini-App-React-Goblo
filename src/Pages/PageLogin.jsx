@@ -33,10 +33,10 @@ function PageLogin() {
   }
 
   return (
-    <div className="login-container">
+    <div className="Page">
 
       {/* 1. Logo au centre de la page */}
-      <div className="logo-container">
+      <div className="logo text-center">
         <img src="/LogoGoblo.png" alt="Logo" className="img-fluid rounded-circle" />
       </div>
 
@@ -75,15 +75,13 @@ function PageLogin() {
 
 
       {/* 4. Input "Se rappeler de moi" */}
-      <div className=" form-check">
+      <div className=" form-check ms-4 mt-3 mb-3">
         <input type="checkbox" id="rememberMeInput" className="form-check-input" />
-        <label htmlFor="rememberMeInput" className="form-check-label">Se rappeler de moi</label>
+        <label htmlFor="rememberMeInput" className="form-check-label ml-2">Se rappeler de moi</label>
       </div>
 
       {/* 5. Bouton "Connection" */}
-      <Link to="/acceuil">
-        <Boutton texte="Connexion" onClick={handleLogin}/>
-      </Link>
+      <Boutton texte="Connexion" onClick={handleLogin}/>
 
       {/* Lien pour la réinitialisation du mot de passe */}
       <p className="text-center"> <Link to="/reset-password"> Mot de passe oublié ? </Link></p>

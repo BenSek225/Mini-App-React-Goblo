@@ -1,21 +1,12 @@
 /* src/Styles/Titre.css */
 
-.titre-container {
-   margin-top: 60px; /* Ajustez la marge selon vos préférences */
-}
-
-.titre-h1 {
-   font-family: Poppins;
-   font-size: 30px;
+.titre {
    line-height: 10px;
    letter-spacing: 0.03em;
    color: #000000; /* Ajoutez la couleur du texte selon vos préférences */
    padding: 1px;
-   margin-bottom: 10px; /* Ajoutez la marge selon vos préférences */
 }
-.titre-p {
-   font-family: Poppins;
-   font-size: 16px;
+.s-titre {
    font-weight: 400;
    line-height: 1.5;
    color: #555;
