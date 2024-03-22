@@ -1,17 +1,21 @@
-// src/components/Boutton.jsx
 // Position:  \src\Components\Boutton.jsx
+
 import React from 'react';
-import { Button } from 'react-bootstrap';
-import '../Styles/Boutton.css';
+import { Button } from '@material-tailwind/react';
 
-
-function Boutton({ texte, onClick}) {
+function Boutton({ texte, onClick }) {
   return (
-    <div className="container m-1 mt-5 mb-5">
-      <Button variant="primary" onClick={onClick}>
+    <div className="mt-5 mb-5 w-full">
+      <Button
+        color="black"
+        ripple="light"
+        onClick={onClick}
+        className="w-full bg-black py-2.5 text-white font-bold text-sm focus:outline-none hover:bg-gray-800 rounded-md"
+        style={{ fontFamily: 'Poppins, sans-serif' }}
+      >
         {texte}
       </Button>
-  </div>
+    </div>
   );
 }
 

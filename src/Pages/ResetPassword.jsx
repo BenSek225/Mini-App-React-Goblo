@@ -2,12 +2,14 @@
 import React, { useState } from 'react';
 import Boutton from '../Components/Boutton';
 import Footer from '../Components/Footer';
+import { Input } from '@material-tailwind/react';
+import { HiOutlineMail } from 'react-icons/hi';
+
 import { useNavigate, Link } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from  '../firebase-config';
+import { auth } from '../firebase-config';
 
 function ResetPasswordPage() {
-
    const navigate = useNavigate();
    const [email, setEmail] = useState('');
 
@@ -25,40 +27,50 @@ function ResetPasswordPage() {
    };
 
    return (
-
-      <div className="Page">
-
-         {/* 1. Logo au centre de la page */}
-         <div className="logo text-center">
-            <img src="/LogoGoblo.png" alt="Logo" className="img-fluid rounded-circle" />
-         </div>
-
-         {/* 2. Input pour l'email */}
-         <div className='input-box'>
-            <div className="input-group mb-3">
-               <span className="input-group-text" id="userIcon">
-                  <i className="bi bi-envelope-at-fill fs-2"></i>
-               </span>
-               <input
-                  type="email"
-                  placeholder="Votre Adresse email"
-                  className="form-control bg-custom-color"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-               />
+      <div className="min-h-screen bg-gray-100 flex flex-col justify-center">
+         <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg mx-auto">
+            {/* 1. Logo au centre de la page */}
+            <div className="text-center">
+               <img className="mx-auto w-20 h-20 mb-4" src="/LogoGoblo.png" alt="Logo de l'application" />
             </div>
+
+            <form className="mt-8">
+               
+               {/* 2. Input pour l'email */}
+               <div className="w-full mb-8">
+                  <Input
+                     label="Votre Adresse email" 
+                     placeholder=" "
+                     icon = {<HiOutlineMail className='h-6 w-6'/>}
+                     type="email"
+                     color="gray"
+                     value={email}
+                     onChange={(e) => setEmail(e.target.value)}
+                     required
+                  />
+               </div>
+
+               {/* 3. Bouton D'envoie de la demande */}
+               <Boutton
+                  texte="Envoyer la demande"
+                  type = "submit"
+                  onClick={handleResetPassword}
+               />
+
+            </form>
+
+            {/* 4. Lien pour le retour a la pageLogin */}
+            <div className="text-center mb-20 text-sm"> 
+               <Link to="/" className="font-medium text-dark-600 hover:text-blue-500">
+                  Retour à la page de connexion
+               </Link>
+            </div>
+
+            {/* 5. Footer */}
+            <Footer />
+
          </div>
-
-         {/* 3. Bouton D'envoie de la demande */}
-         <Boutton texte="Envoyer la demande" onClick={handleResetPassword}/>
-
-         {/* 4. Lien pour le retour a la pageLogin */}
-         <p className="text-center"> <Link to="/"> Retour à la page de connexion </Link> </p>
-
-         {/* 5. Footer */}
-         <Footer />
       </div>
-
    );
 }
 

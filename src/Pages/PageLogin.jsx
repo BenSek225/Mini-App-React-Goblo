@@ -1,95 +1,108 @@
-// src/pages/PageLogin.jsx
-// Position: \src\Pages\PageLogin.jsx
 import React, { useState } from 'react';
+import { Input, Checkbox } from '@material-tailwind/react';
+import { useNavigate, Link } from 'react-router-dom';
+import { HiUser, HiLockClosed} from 'react-icons/hi';
+import { auth } from '../firebase-config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import Boutton from '../Components/Boutton';
 import Footer from '../Components/Footer';
-import { useNavigate, Link } from  "react-router-dom";
 
-import { auth } from  '../firebase-config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
-import '../Styles/PageLogin.css';
-
-function PageLogin() {
-
+function LoginPage() {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
-  function handleLogin(e) {
-    e.preventDefault();
+  const [rememberMe, setRememberMe] = useState(false);
 
+  const handleLogin = (e) => {
+    e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-        console.log(userCredential)
-        alert('Connection réussi')
-        navigate("/acceuil");
-    })
-    .catch((error) => {
+      .then((userCredential) => {
+        console.log(userCredential);
+        alert('Connexion réussie');
+        navigate('/acceuil');
+      })
+      .catch((error) => {
         console.error('Erreur de connexion: ', error.message);
-        alert( 'erreur :'+ error.message );
-    });
-  }
+        alert('Erreur : ' + error.message);
+      });
+  };
 
   return (
-    <div className="Page">
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center">
+      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg mx-auto">
 
-      {/* 1. Logo au centre de la page */}
-      <div className="logo text-center">
-        <img src="/LogoGoblo.png" alt="Logo" className="img-fluid rounded-circle" />
-      </div>
-
-
-      {/* 2. Input "Votre login" */}
-      <div className='input-box'>
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="userIcon">
-            <i className="bi bi-person-fill fs-2"></i>
-          </span>
-          <input
-            type="email"
-            placeholder="Votre Login"
-            className="form-control bg-custom-color"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        {/* 1. Logo au centre de la page */}
+        <div className="text-center">
+            <img className="mx-auto w-20 h-20 mb-4" src="/LogoGoblo.png" alt="Logo de l'application" />
         </div>
-      </div>
 
-      {/* 3. Input "Votre mot de passe" */}
-      <div className="input-box">
-        <div className="input-group mb-3">
-          <span className="input-group-text" id="lockIcon">
-            <i className="bi bi-lock-fill fs-2"></i>
-          </span>
-          <input
-            type="password"
-            placeholder="Votre mot de passe"
-            className="form-control bg-custom-color"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+        <form className="mt-8">
+
+          {/* 2. Le input email */}
+          <div className="w-full mb-8">
+                <Input
+                  label="Votre login" 
+                  placeholder=" "
+                  icon = {<HiUser className='h-6 w-6'/>}
+                  type="email"
+                  color="gray"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+          </div>
+
+          {/* 3. Le input mot de passe */}
+          <div className="w-full ">
+                <Input 
+                  label="Votre mot de passe" 
+                  placeholder=" "
+                  icon = {<HiLockClosed className='h-6 w-6'/>}
+                  type="password"
+                  color="gray"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+          </div>
+
+          {/* 4. Le check box */}
+          <div className="flex items-center mb-3 justify-between">
+
+            <div>
+              <Checkbox 
+                color="dark"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)} />
+              <span className="text-sm text-gray-600">Se rappeler de moi</span>
+            </div>
+
+            <div className="text-sm text-center">
+              <Link to="/reset-password" className="font-medium text-dark-600 hover:text-blue-500">
+                Mot de passe oublié ?
+              </Link>
+            </div>
+          </div>
+
+          {/* 5. Mon composant boutton */}
+          <Boutton 
+            texte="Connexion" 
+            type="submit" 
+            onClick={handleLogin}
           />
+
+        </form>
+
+        {/* 6. Mon composant footer */}
+        <div className="text-center mt-50">
+          <Footer/>
         </div>
+
       </div>
-
-
-      {/* 4. Input "Se rappeler de moi" */}
-      <div className=" form-check ms-4 mt-3 mb-3">
-        <input type="checkbox" id="rememberMeInput" className="form-check-input" />
-        <label htmlFor="rememberMeInput" className="form-check-label ml-2">Se rappeler de moi</label>
-      </div>
-
-      {/* 5. Bouton "Connection" */}
-      <Boutton texte="Connexion" onClick={handleLogin}/>
-
-      {/* Lien pour la réinitialisation du mot de passe */}
-      <p className="text-center"> <Link to="/reset-password"> Mot de passe oublié ? </Link></p>
-
-      {/* 6. Footer */}
-      <Footer />
     </div>
+    
   );
 }
 
-export default PageLogin;
+export default LoginPage;

@@ -1,13 +1,10 @@
-// src/components/Footer.jsx
-
 import React from 'react';
-import '../Styles/Footer.css';
 
 function Footer() {
   return (
-    <footer className="text-light text-center py-3">
-      <div className="container">
-        <p className='footer-text fs-5'>&copy; 2022 - Globo</p>
+    <footer className="text-gray-300 py-4 mt-auto">
+      <div className="container mx-auto flex items-center justify-center">
+        <p className="text-sm font-bold">&copy;2024 Globo</p>
       </div>
     </footer>
   );

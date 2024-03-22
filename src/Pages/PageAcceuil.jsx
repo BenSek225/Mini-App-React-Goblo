@@ -1,11 +1,14 @@
-import React from 'react';
-import Footer from '../Components/Footer';
+import React, { useState } from 'react';
+import Footer from '../Components/Footer'; 
 import { Link, useNavigate } from 'react-router-dom';
-import '../Styles/PageAcceuil.css';
 
 import { signOut } from 'firebase/auth';
 import { auth } from  '../firebase-config';
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { BsList } from 'react-icons/bs';
+import {
+   Navbar, 
+   Typography,
+} from "@material-tailwind/react";
 
 function PageAcceuil() {
 
@@ -24,54 +27,94 @@ function PageAcceuil() {
             alert(error.message);
          });
    };
+   const [showMenu, setShowMenu] = useState(false);
 
    return (
 
       <>
+            <Navbar className="bg-black w-full m-1 text-white py-4 mx-auto max-w-none">
+               <div className="flex items-center justify-between w-full">
+                  <Typography
+                  as="a"
+                  href="/acceuil"
+                  variant="h6"
+                  className="cursor-pointer py-1.5 mr-auto text-white"
+                  >
+                  Goblo
+                  </Typography>
+                  <div className="hidden lg:flex items-center ml-auto">
+                  <Typography
+                     as="a"
+                     href="#"
+                     variant="body"
+                     className="text-white mx-4 cursor-pointer"
+                  >
+                     Mon Compte
+                  </Typography>
+                  <Typography
+                     as="a"
+                     href="#"
+                     variant="body"
+                     className="text-white cursor-pointer"
+                     onClick={handleLogout}
+                  >
+                     Déconnexion
+                  </Typography>
+                  </div>
+                  <BsList
+                  className="block lg:hidden text-white cursor-pointer"
+                  onClick={() => setShowMenu(!showMenu)}
+                  />
+               </div>
+               {showMenu && (
+                  <div className="lg:hidden flex flex-col items-center mt-4">
+                  <Typography
+                     as="a"
+                     href="#"
+                     variant="body"
+                     className="text-white mb-2 cursor-pointer"
+                  >
+                     Mon Compte
+                  </Typography>
+                  <Typography
+                     as="a"
+                     href="#"
+                     variant="body"
+                     className="text-white cursor-pointer"
+                     onClick={handleLogout}
+                  >
+                     Déconnexion
+                  </Typography>
+                  </div>
+               )}
+            </Navbar>
 
-         {/* Ajout d'une nav bar */}
-         <Navbar bg="dark" variant="dark" expand="lg">
-            <Container className='ms-5 mr-4'>
-               <Navbar.Brand href="/acceuil"> Goblo </Navbar.Brand>
-               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-               <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="ml-auto">
-                     <Nav.Link href="/acceuil"> Mon Compte </Nav.Link>
-                     <div className="pc-separator"></div>
-                     <div className="mobile-separator"></div>
-                     <Nav.Link onClick={handleLogout}> Se Déconnecter </Nav.Link>
-                  </Nav>
-               </Navbar.Collapse>
-            </Container>
-         </Navbar>
-
-         <div className="Page acceuil">
+         <div className="max-w-screen-md mx-auto">
 
             {/* 1. Logo au centre de la page */}
-            <div className="logo-ici text-center">
-               <img src="/LogoGoblo.png" alt="Logo" className="img-fluid rounded-circle" />
+            <div className="logo flex justify-center items-center mt-8 mb-8">
+               <img src="/LogoGoblo.png" alt="Logo" className="w-32 h-32 rounded-full" />
             </div>
             
-            
             {/* 2. Div principale avec 6 boutons */}
-            <div className="group-container col mt-5">
+            <div className="max-w-screen-lg mx-auto relative p-4 col mt-5">
 
-               <div className="flex-container">
+               <div className="flex flex-wrap justify-between">
                   {/* Élément 1 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
-                        <Link to="/enrolement" className="link">
+                     <div className="bg-gray-300 rounded-xl p-2.5">
+                        <Link to="/enrolement" style={{ textDecoration: 'none' }}>
                            {/* Icône dans un cercle */}
-                           <div className="circle-icon">
+                           <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                               {/* <i className="bi bi-people custom-fs"></i>
                               <span className="custom-plus">+</span> */}
-                              <img src="/Enroler.png" alt="Enroler"/>
+                              <img src="/Enroler.png" alt="Enroler" className="max-w-[80%] max-h-80 rounded-full"/>
                            </div>
                            {/* Titre */}
-                           <h2>Enrôler</h2>
+                           <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Enrôler</h2>
                            {/* Texte en dessous du titre */}
-                           <p>Enregistrer les contribuables</p>
+                           <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Enregistrer les contribuables</p>
                         </Link>
                      </div>
 
@@ -80,17 +123,17 @@ function PageAcceuil() {
                   {/* Élément 2 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
-                        <Link to="/encaissement" className='link'>
+                     <div className="bg-gray-300 rounded-xl p-2.5">
+                        <Link to="/encaissement" style={{ textDecoration: 'none' }}>
                            {/* Icône dans un cercle */}
-                           <div className="circle-icon">
+                           <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                               {/* <i className="bi bi-wallet custom-fs"></i> */}
-                              <img src="/Encaisser.png" alt="Encaisser"/>
+                              <img src="/Encaisser.png" alt="Encaisser" className="max-w-[80%] max-h-80 rounded-full"/>
                            </div>
                            {/* Titre */}
-                           <h2>Encaisser</h2>
+                           <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Encaisser</h2>
                            {/* Texte en dessous du titre */}
-                           <p>Encaisser les contribuables</p>
+                           <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Encaisser les contribuables</p>
                         </Link>
                      </div>
 
@@ -99,15 +142,15 @@ function PageAcceuil() {
                   {/* Élément 3 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
+                     <div className="bg-gray-300 rounded-xl p-2.5">
                         {/* Icône dans un cercle */}
-                        <div className="circle-icon">
-                           <img src="/Controler.png" alt="Controle"/>
+                        <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
+                           <img src="/Controler.png" alt="Controle" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
-                        <h2>Contrôler</h2>
+                        <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Contrôler</h2>
                         {/* Texte en dessous du titre */}
-                        <p>Contrôler les contribuables</p>
+                        <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Contrôler les contribuables</p>
                      </div>
 
                   </div>
@@ -115,16 +158,16 @@ function PageAcceuil() {
                   {/* Élément 4 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
+                     <div className="bg-gray-300 rounded-xl p-2.5">
                         {/* Icône dans un cercle */}
-                        <div className="circle-icon">
+                        <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-graph-up custom-fs"></i> */}
-                           <img src="/Rapport.png" alt="Rapport"/>
+                           <img src="/Rapport.png" alt="Rapport" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
-                        <h2>Rapport</h2>
+                        <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Rapport</h2>
                         {/* Texte en dessous du titre */}
-                        <p>Consulter les rapports</p>
+                        <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Consulter les rapports</p>
                      </div>
 
                   </div>
@@ -132,16 +175,16 @@ function PageAcceuil() {
                   {/* Élément 5 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
+                     <div className="bg-gray-300 rounded-xl p-2.5">
                         {/* Icône dans un cercle */}
-                        <div className="circle-icon">
+                        <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-person custom-fs"></i> */}
-                           <img src="/Compte.png" alt="Compte"/>
+                           <img src="/Compte.png" alt="Compte" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
-                        <h2>Compte</h2>
+                        <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Compte</h2>
                         {/* Texte en dessous du titre */}
-                        <p>Créer les comptes utilisateurs</p>
+                        <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Créer les comptes utilisateurs</p>
                      </div>
 
                   </div>
@@ -149,16 +192,16 @@ function PageAcceuil() {
                   {/* Élément 6 */}
                   <div className="flex-item">
 
-                     <div className="box-seul">
+                     <div className="bg-gray-300 rounded-xl p-2.5">
                         {/* Icône dans un cercle */}
-                        <div className="circle-icon">
+                        <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-wallet-fill custom-fs"></i> */}
-                           <img src="/Decaisser.png" alt="Decaisser"/>
+                           <img src="/Decaisser.png" alt="Decaisser" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
-                        <h2>Décaisser</h2>
+                        <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Décaisser</h2>
                         {/* Texte en dessous du titre */}
-                        <p>Effectuer les décaissements</p>
+                        <p className="text-lg font-normal leading-6 tracking-wide text-black mt-2">Effectuer les décaissements</p>
                      </div>
 
                   </div>

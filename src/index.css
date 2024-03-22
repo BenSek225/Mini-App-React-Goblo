@@ -1,50 +1,21 @@
+/* src/index.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-@import 'bootstrap/dist/css/bootstrap.min.css';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
-
-body div p{
-   font-family: Poppins;
+html {
+   font-family: 'Poppins';
 }
-p{
-   font-size: large;
-}
-
-/* LES Navbar */
-.navbar-nav {
-   display: flex;
-   flex-direction: row;
-}
-   
-.navbar-nav .nav-link {
-   padding-right: 10px;  /* Ajustez l'espacement des liens */
-}
-   
-@media (max-width: 991px) {
-   .navbar-nav {
-      flex-direction: column;
-      align-items: flex-end;  /* Alignez les liens à droite dans la version mobile */
-   }
-   .navbar-nav .nav-link {
-      padding: 10px 0;  /* Ajustez l'espacement des liens dans la version mobile */
-   }
-   .mobile-separator {
-      border-bottom: 1px solid white;
-      width: 110px;
-      margin-bottom: 20px; /* Ajustez selon vos besoins */
-   }
-}
-@media (min-width: 991px) {
-   .pc-separator {
-      border-right: 1px solid white;
-      margin-right: 20px;
-      height: 30px; /* Ajustez selon vos besoins */
-   }
+body div p {
+   font-family: 'Poppins';
 }
 
-/* Page Container */
-.Page{
-   max-width: 600px;
-   margin: auto;
-   position: relative;
-   padding: 20px;
+.flex-item {
+   width: calc(50% - 10px); /* Pour deux colonnes sur les petits écrans */
+   margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+   .flex-item {
+     width: calc(33.3333% - 10px); /* Pour trois colonnes sur les écrans moyens et plus */
+   }
 }
