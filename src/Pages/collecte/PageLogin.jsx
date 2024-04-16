@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Input, Checkbox } from '@material-tailwind/react';
 import { useNavigate, Link } from 'react-router-dom';
 import { HiUser, HiLockClosed} from 'react-icons/hi';
-import { auth } from '../firebase-config';
+import { auth } from '../../firebase-config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import Boutton from '../Components/Boutton';
-import Footer from '../Components/Footer';
+import Boutton from '../../Components/Boutton';
+import Footer from '../../Components/Footer';
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ function LoginPage() {
 
         {/* 1. Logo au centre de la page */}
         <div className="text-center">
-            <img className="mx-auto w-20 h-20 mb-4" src="/LogoGoblo.png" alt="Logo de l'application" />
+            <img className="mx-auto w-20 h-20 mb-4" src="/logo/LogoGoblo.png" alt="Logo de l'application" />
         </div>
 
         <form className="mt-8">

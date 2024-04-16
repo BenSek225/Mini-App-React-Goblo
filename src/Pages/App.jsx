@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import PageLogin from './Pages/PageLogin';
-import ResetPassword from './Pages/ResetPassword';
-import PageAcceuil from './Pages/PageAcceuil';
-import PageEnrolement from './Pages/PageEnrolement';
-import PageEncaissement from './Pages/PageEncaissement';
+import PageLogin from './collecte/PageLogin';
+import ResetPassword from './collecte/ResetPassword';
+import PageAcceuil from './collecte/PageAcceuil';
+import PageEnrolement from './collecte/PageEnrolement';
+import PageEncaissement from './collecte/PageEncaissement';
 
 function App() {
   return (

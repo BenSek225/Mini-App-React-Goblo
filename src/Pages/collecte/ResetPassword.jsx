@@ -1,13 +1,13 @@
 // src/pages/ResetPasswordPage.jsx
 import React, { useState } from 'react';
-import Boutton from '../Components/Boutton';
-import Footer from '../Components/Footer';
+import Boutton from '../../Components/Boutton';
+import Footer from '../../Components/Footer';
 import { Input } from '@material-tailwind/react';
 import { HiOutlineMail } from 'react-icons/hi';
 
 import { useNavigate, Link } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../firebase-config';
+import { auth } from '../../firebase-config';
 
 function ResetPasswordPage() {
    const navigate = useNavigate();
@@ -31,7 +31,7 @@ function ResetPasswordPage() {
          <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg mx-auto">
             {/* 1. Logo au centre de la page */}
             <div className="text-center">
-               <img className="mx-auto w-20 h-20 mb-4" src="/LogoGoblo.png" alt="Logo de l'application" />
+               <img className="mx-auto w-20 h-20 mb-4" src="/logo/LogoGoblo.png" alt="Logo de l'application" />
             </div>
 
             <form className="mt-8">

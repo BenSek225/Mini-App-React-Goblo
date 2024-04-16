@@ -1,11 +1,11 @@
 // src/pages/PageEnrolement.jsx
 
 import React, { useState, useEffect }  from 'react';
-import Boutton from '../Components/Boutton';
-import Footer from '../Components/Footer';
+import Boutton from '../../Components/Boutton';
+import Footer from '../../Components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { auth } from  '../firebase-config';
+import { auth } from  '../../firebase-config';
 import { BsList } from 'react-icons/bs'; 
 import {
   Input,
@@ -196,7 +196,7 @@ function PageEnrolement() {
         <div className='max-w-md w-full p-8 mx-auto'>
 
           <div className="logo flex justify-center items-center mt-1 mb-1">
-              <img src="/LogoGoblo.png" alt="Logo" className="w-20 h-20 rounded-full" />
+              <img src="/logo/LogoGoblo.png" alt="Logo" className="w-20 h-20 rounded-full" />
           </div>
 
           {/* 1. Titre "Enrôler" */}

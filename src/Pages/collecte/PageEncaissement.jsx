@@ -1,11 +1,11 @@
 // src/pages/PageEncaissement.jsx
 
-import React, { useState, useEffect } from 'react';
-import Boutton from '../Components/Boutton';
-import Footer from '../Components/Footer';
+import React, { useState } from 'react';
+import Boutton from '../../Components/Boutton';
+import Footer from '../../Components/Footer';
 import { useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
-import { auth } from  '../firebase-config';
+import { auth } from  '../../firebase-config';
 import { BsList } from 'react-icons/bs'; 
 import {
   Input,
@@ -16,9 +16,16 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import { db } from '../../firebase-config';
+import { addDoc, collection, query, where, getDocs, serverTimestamp } from "firebase/firestore"; 
 
 function PageEncaissement() {
-
+  
+  const [matricule, setMatricule] = useState("");
+  const [recuPaiement, setRecuPaiement] = useState("")
+  const [commercant, setCommercant] = useState(null);
+  const [open, setOpen] = React.useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -35,25 +42,85 @@ function PageEncaissement() {
       });
   };
 
-  const [randomNumbers, setRandomNumbers] = useState('');
-  useEffect(() => {
+  const handleOpen = async () => {
+    if (matricule.trim() === '') {
+      alert("Veuillez entrer un matricule.");
+      return;
+    }
+    const commercantData = await fetchCommercant();
+    const commercantId = commercantData.id;
+    const recu = commercantData.Recu;
+    console.log("les donner retourner; son ID: ", commercantId, " Et le recu: ", recu)
+    if (commercantData) {
+      await enregistrerPaiement(commercantData);
+      setOpen(true);
+    }
+  };
+
+  // Fonction pour récupérer les données des commerçants depuis Firestore
+  const fetchCommercant = async () => {
+    try {
+    const commercantRef = collection(db, 'commercant'); // Référence à la collection "commercant"
+    const q = query(commercantRef, where("Matricule", "==", matricule)); // Requête pour récupérer le commerçant correspondant au matricule entré
+    const querySnapshot = await getDocs(q); // Exécute la requête
+      if (!querySnapshot.empty) {
+          const doc = querySnapshot.docs[0];
+          const commercantData = doc.data();
+          console.log('Données du commerçant const commercantData:', commercantData); // Vérifier les données du commerçant
+          setCommercant(commercantData);
+          const Recu = generateRecu(); //generer un nombre aleatoire en guise de recu de paiement
+          setRecuPaiement(Recu);
+          return {
+            id: doc.id,
+            Recu: Recu
+          };
+      } else {
+          console.log("Le matricule ne correspond à aucun commerçant.");
+          return false;
+      }
+    } catch (error) {
+      console.error("Error fetching commercant: ", error);
+      return  false;
+    }
+  };
+
+  const generateRecu = () => {
     // Génère quatre chiffres aléatoires
-    const generateRandomNumbers = () => {
-      const randomNumber = Math.floor(1000 + Math.random() * 9000);
-      setRandomNumbers(randomNumber.toString().split('').join(' '));
-    };
+    const randomNumber = Math.floor(1000 + Math.random() * 9000);
+    // Convertir le nombre en chaîne et supprimer les espaces
+    const recuSansEspaces = randomNumber.toString().replace(/ /g, '');
+    // Définir le reçu sans espaces
+    return recuSansEspaces;
+  };
 
-    generateRandomNumbers();
-  }, []); // Le tableau vide [] fait en sorte que cela s'exécute une seule fois lors du montage initial
+  // // Génère quatre chiffres aléatoires
+  // const generateRecu = () => {
+  //    const randomNumber = Math.floor(1000 + Math.random() * 9000);
+  //    const BonRecu = randomNumber.toString().split('').join(' ');
+  //    return BonRecu;
+  // };
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(!open);
-  const [showMenu, setShowMenu] = useState(false);
+  // Fonction pour enregistrer un paiement
+  const enregistrerPaiement = async (commercantData) => {
+    console.log("afficher commercantData dans enregistrer paiement",  commercantData)
+    // Enregistrer le paiement dans Firestore
+    try {
+      const docRef = await addDoc(collection(db, 'paiement'), {
+          CommercantRef: commercantData.id,
+          DateHeure: serverTimestamp(),
+          NumeroRecu: commercantData.Recu
+      });
+      console.log('Paiement enregistré avec l\'ID: ', docRef.id);
+      } catch (error) {
+          console.error('Erreur lors de l\'enregistrement du paiement : ', error);
+      }
+  };
+
 
   return (
     <>
 
-        <Navbar className="bg-black w-full m-1 text-white py-4 mx-auto max-w-none">
+      <Navbar className="bg-black w-full m-1 text-white py-4 mx-auto max-w-none">
           <div className="flex items-center justify-between w-full">
               <Typography
               as="a"
@@ -188,13 +255,13 @@ function PageEncaissement() {
               </Typography>
               </div>
           )}
-        </Navbar>
+      </Navbar>
 
       <div className="min-h-screen bg-gray-100 flex flex-col justify-center">
         <div className="max-w-md w-full p-8 mx-auto">
 
           <div className="logo flex justify-center items-center mt-1 mb-1">
-              <img src="/LogoGoblo.png" alt="Logo" className="w-20 h-20 rounded-full" />
+              <img src="/logo/LogoGoblo.png" alt="Logo" className="w-20 h-20 rounded-full" />
           </div>
           
           {/* 1. Titre "Encaisser" */}
@@ -208,13 +275,16 @@ function PageEncaissement() {
 
               {/* 2. Input pour le matricule */}
               <div className="w-full mb-8 mt-20">
-                  <Input
-                    label="Matricule" 
-                    placeholder=" "
-                    type="text"
-                    color="gray"
-                    required
-                  />
+                <Input
+                  label="Matricule" 
+                  placeholder=" "
+                  type="text"
+                  color="gray"
+                  required
+                  value={matricule}
+                  onChange={(e) => setMatricule(e.target.value)} 
+                  // Met à jour l'état du matricule à chaque changement de valeur
+                />
               </div>
 
               {/* 3. Mon composant boutton qui appel un Dilog */}
@@ -226,7 +296,7 @@ function PageEncaissement() {
                 <Dialog 
                   open={open} 
                     size="xs" 
-                    handler={handleOpen}>
+                    handler={() => setOpen(false)}>
 
                     <div className="flex items-center justify-between">
                       <DialogHeader className="flex flex-col items-start">
@@ -237,7 +307,7 @@ function PageEncaissement() {
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className="mr-3 h-5 w-5"
-                        onClick={handleOpen}
+                        onClick={() => setOpen(false)}
                       >
                         <path
                           fillRule="evenodd"
@@ -248,11 +318,17 @@ function PageEncaissement() {
                     </div>
 
                     <DialogBody className='text-center'>
-                        <h2 className="text-4xl font-bold mb-4">Encaissement réussi</h2>
-                        <p className='text-2xl'> <span> M. TETCHI </span> a payé</p>
-                        <h1 className='text-4xl font-bold'>10.000 FCFA</h1>
-                        <p className='text-2xl'>et a reçu le N°</p>
-                        <h1 className='text-2xl font-bold'>{randomNumbers}</h1>
+                        {commercant ? (
+                          <>
+                              <h2 className="text-4xl font-bold mb-4">Encaissement réussi</h2>
+                              <p className='text-2xl'> <span className='font-bolt text-3xl'>{commercant.NomPrenom}</span> a payé</p>
+                              <h1 className='text-3xl font-bold'>{commercant.Montant} FCFA</h1>
+                              <p className='text-2xl'>le N° du recu est:</p>
+                              <h1 className='text-2xl font-bold'>{recuPaiement}</h1>
+                          </>
+                        ) : (
+                          <p className="text-red-500 text-3xl">Le matricule ne correspond à aucun commerçant.</p>
+                        )}
                     </DialogBody>
 
                     <DialogFooter className="space-x-2">

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Footer from '../Components/Footer'; 
+import Footer from '../../Components/Footer'; 
 import { Link, useNavigate } from 'react-router-dom';
 
 import { signOut } from 'firebase/auth';
-import { auth } from  '../firebase-config';
+import { auth } from  '../../firebase-config';
 import { BsList } from 'react-icons/bs';
 import {
    Navbar, 
@@ -93,7 +93,7 @@ function PageAcceuil() {
 
             {/* 1. Logo au centre de la page */}
             <div className="logo flex justify-center items-center mt-8 mb-8">
-               <img src="/LogoGoblo.png" alt="Logo" className="w-32 h-32 rounded-full" />
+               <img src="logo/LogoGoblo.png" alt="Logo" className="w-32 h-32 rounded-full" />
             </div>
             
             {/* 2. Div principale avec 6 boutons */}
@@ -109,7 +109,7 @@ function PageAcceuil() {
                            <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                               {/* <i className="bi bi-people custom-fs"></i>
                               <span className="custom-plus">+</span> */}
-                              <img src="/Enroler.png" alt="Enroler" className="max-w-[80%] max-h-80 rounded-full"/>
+                              <img src="icones/Enroler.png" alt="Enroler" className="max-w-[80%] max-h-80 rounded-full"/>
                            </div>
                            {/* Titre */}
                            <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Enrôler</h2>
@@ -128,7 +128,7 @@ function PageAcceuil() {
                            {/* Icône dans un cercle */}
                            <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                               {/* <i className="bi bi-wallet custom-fs"></i> */}
-                              <img src="/Encaisser.png" alt="Encaisser" className="max-w-[80%] max-h-80 rounded-full"/>
+                              <img src="icones/Encaisser.png" alt="Encaisser" className="max-w-[80%] max-h-80 rounded-full"/>
                            </div>
                            {/* Titre */}
                            <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Encaisser</h2>
@@ -145,7 +145,7 @@ function PageAcceuil() {
                      <div className="bg-gray-300 rounded-xl p-2.5">
                         {/* Icône dans un cercle */}
                         <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
-                           <img src="/Controler.png" alt="Controle" className="max-w-[80%] max-h-80 rounded-full"/>
+                           <img src="icones/Controler.png" alt="Controle" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
                         <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Contrôler</h2>
@@ -162,7 +162,7 @@ function PageAcceuil() {
                         {/* Icône dans un cercle */}
                         <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-graph-up custom-fs"></i> */}
-                           <img src="/Rapport.png" alt="Rapport" className="max-w-[80%] max-h-80 rounded-full"/>
+                           <img src="icones/Rapport.png" alt="Rapport" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
                         <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Rapport</h2>
@@ -179,7 +179,7 @@ function PageAcceuil() {
                         {/* Icône dans un cercle */}
                         <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-person custom-fs"></i> */}
-                           <img src="/Compte.png" alt="Compte" className="max-w-[80%] max-h-80 rounded-full"/>
+                           <img src="icones/Compte.png" alt="Compte" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
                         <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Compte</h2>
@@ -196,7 +196,7 @@ function PageAcceuil() {
                         {/* Icône dans un cercle */}
                         <div className="w-20 h-20 bg-white rounded-full mb-4 flex items-center justify-center">
                            {/* <i className="bi bi-wallet-fill custom-fs"></i> */}
-                           <img src="/Decaisser.png" alt="Decaisser" className="max-w-[80%] max-h-80 rounded-full"/>
+                           <img src="icones/Decaisser.png" alt="Decaisser" className="max-w-[80%] max-h-80 rounded-full"/>
                         </div>
                         {/* Titre */}
                         <h2 className="text-2xl font-bold leading-7 tracking-wide text-black mt-6">Décaisser</h2>
