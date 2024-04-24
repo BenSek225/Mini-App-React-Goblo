@@ -24,8 +24,8 @@ function PageEncaissement() {
   const [matricule, setMatricule] = useState("");
   const [recuPaiement, setRecuPaiement] = useState("")
   const [commercant, setCommercant] = useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [showMenu, setShowMenu] = useState(false);
+  const [afficher, setAfficher] = React.useState(false);
+  const [voirMenu, setVoirMenu] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -42,7 +42,7 @@ function PageEncaissement() {
       });
   };
 
-  const handleOpen = async () => {
+  const handleSubmit = async () => {
     if (matricule.trim() === '') {
       alert("Veuillez entrer un matricule.");
       return;
@@ -53,16 +53,16 @@ function PageEncaissement() {
     console.log("les donner retourner; son ID: ", commercantId, " Et le recu: ", recu)
     if (commercantData) {
       await enregistrerPaiement(commercantData);
-      setOpen(true);
+      setAfficher(true);
     }
   };
 
   // Fonction pour récupérer les données des commerçants depuis Firestore
   const fetchCommercant = async () => {
     try {
-    const commercantRef = collection(db, 'commercant'); // Référence à la collection "commercant"
-    const q = query(commercantRef, where("Matricule", "==", matricule)); // Requête pour récupérer le commerçant correspondant au matricule entré
-    const querySnapshot = await getDocs(q); // Exécute la requête
+      const commercantRef = collection(db, 'commercants'); // Référence à la collection "commercants"
+      const q = query(commercantRef, where("Matricule", "==", matricule)); // Requête pour récupérer le commerçant correspondant au matricule entré
+      const querySnapshot = await getDocs(q); // Exécute la requête
       if (!querySnapshot.empty) {
           const doc = querySnapshot.docs[0];
           const commercantData = doc.data();
@@ -92,13 +92,6 @@ function PageEncaissement() {
     // Définir le reçu sans espaces
     return recuSansEspaces;
   };
-
-  // // Génère quatre chiffres aléatoires
-  // const generateRecu = () => {
-  //    const randomNumber = Math.floor(1000 + Math.random() * 9000);
-  //    const BonRecu = randomNumber.toString().split('').join(' ');
-  //    return BonRecu;
-  // };
 
   // Fonction pour enregistrer un paiement
   const enregistrerPaiement = async (commercantData) => {
@@ -191,10 +184,10 @@ function PageEncaissement() {
               </div>
               <BsList
               className="block lg:hidden text-white cursor-pointer"
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={() => setVoirMenu(!voirMenu)}
               />
           </div>
-          {showMenu && (
+          {voirMenu && (
               <div className="lg:hidden flex flex-col items-center mt-4">
               <Typography
                 as="a"
@@ -291,12 +284,12 @@ function PageEncaissement() {
               <>
                 <Boutton
                   texte="Encaisser"
-                  onClick={handleOpen}
+                  onClick={handleSubmit}
                 />
                 <Dialog 
-                  open={open} 
+                    open={afficher} 
                     size="xs" 
-                    handler={() => setOpen(false)}>
+                    handler={() => setAfficher(false)}>
 
                     <div className="flex items-center justify-between">
                       <DialogHeader className="flex flex-col items-start">
@@ -307,7 +300,7 @@ function PageEncaissement() {
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         className="mr-3 h-5 w-5"
-                        onClick={() => setOpen(false)}
+                        onClick={() => setAfficher(false)}
                       >
                         <path
                           fillRule="evenodd"
